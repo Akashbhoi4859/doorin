@@ -1,0 +1,139 @@
+.cart {
+  padding: 20px;
+  border: 1px solid #ddd;
+  width: 400px;
+  margin-top: 30px;
+  background-color: #fafafa;
+  border-radius: 8px;
+}
+
+.cart h2 {
+  margin-bottom: 16px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.item-name {
+  flex: 2;
+}
+
+.item-price {
+  flex: 1;
+  text-align: right;
+}
+
+.quantity-input {
+  width: 50px;
+  margin: 0 10px;
+}
+
+.remove-btn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.remove-btn:hover {
+  background-color: #c82333;
+}
+
+.empty-cart {
+  color: #888;
+}
+
+/* Coupon Section */
+.coupon-section {
+  display: flex;
+  margin: 15px 0;
+  gap: 10px;
+}
+
+.coupon-input {
+  flex: 1;
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.apply-coupon-btn {
+  background-color: #2563eb;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.apply-coupon-btn:hover {
+  background-color: #1d4ed8;
+}
+
+.cart-total {
+  font-size: 1rem;
+  text-align: right;
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
+.checkout-btn {
+  width: 100%;
+  background-color: #28a745;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.checkout-btn:hover {
+  background-color: #218838;
+}
+
+/* =========================
+   Mobile Responsive Styles
+========================= */
+@media (max-width: 480px) {
+  .cart {
+    width: 90%;
+    margin: 20px auto;
+    padding: 15px;
+  }
+
+  .cart-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .item-price {
+    text-align: left;
+  }
+
+  .quantity-input {
+    margin: 0;
+  }
+
+  .coupon-section {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .apply-coupon-btn,
+  .checkout-btn {
+    width: 100%;
+  }
+}

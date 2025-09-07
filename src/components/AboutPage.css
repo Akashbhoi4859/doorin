@@ -1,0 +1,142 @@
+/* Container */
+.about-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 4rem;
+  background: #f4f6f9;
+  align-items: center;
+  opacity: 0;
+  transform: translateX(-80px);
+  transition: all 0.8s ease-in-out;
+}
+
+/* Animate when visible */
+.about-container.animate {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Text */
+.about-text {
+  flex: 1 1 45%;
+  max-width: 600px;
+}
+
+.about-text h2 {
+  font-size: 2.5rem;
+  color: #1d3b2a;
+  margin-bottom: 1rem;
+}
+
+.about-text p {
+  font-size: 1rem;
+  margin: 1rem 0 2rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Points */
+.about-points {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.point {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.point:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+.point h3 {
+  font-size: 2rem;
+  color: #004d40;
+}
+
+.point h4 {
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+  color: #222;
+}
+
+/* Button */
+.learn-more {
+  margin-top: 2rem;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #004d40, #1d3b2a);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.learn-more:hover {
+  background: linear-gradient(135deg, #1d3b2a, #004d40);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+}
+
+/* Gallery */
+.about-gallery {
+  flex: 1 1 45%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.about-gallery img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  transition: transform 0.4s ease, box-shadow 0.3s ease;
+}
+
+.about-gallery img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .about-container {
+    flex-direction: column;
+    padding: 3rem 2rem;
+  }
+  .about-text,
+  .about-gallery {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-points {
+    grid-template-columns: 1fr;
+  }
+  .about-text h2 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-container {
+    padding: 2rem 1rem;
+  }
+  .about-text h2 {
+    font-size: 1.8rem;
+  }
+}
