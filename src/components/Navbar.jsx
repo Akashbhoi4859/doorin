@@ -27,9 +27,9 @@ export default function Navbar({
 
   useEffect(() => {
     if (audioRef.current) {
-      audioRef.current.volume = 0.2;
+      audioRef.current.volume = volume;
     }
-  }, []);
+  }, [volume]);
 
   const handleQuantityChange = (itemId, delta) => {
     const item = cart.find((i) => i.id === itemId);
@@ -58,15 +58,25 @@ export default function Navbar({
     setShowCart(false);
   };
 
-  // 🎵 Play / Pause
+  // 🎵 Play / Pause with promise handling
   const toggleMusic = () => {
     if (!audioRef.current) return;
     if (isPlaying) {
       audioRef.current.pause();
+      setIsPlaying(false);
     } else {
-      audioRef.current.play();
+      const playPromise = audioRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => setIsPlaying(true))
+          .catch((error) => {
+            console.error("Audio playback failed:", error);
+            alert(
+              "Audio playback failed. Make sure the file exists and is supported."
+            );
+          });
+      }
     }
-    setIsPlaying(!isPlaying);
   };
 
   // 🔊 Volume
@@ -148,8 +158,8 @@ export default function Navbar({
         </li>
       </ul>
 
-      {/* hidden audio element */}
-      <audio ref={audioRef} src="public/sample.mp3" loop />
+      {/* Hidden audio element */}
+      <audio ref={audioRef} src="/sample.mp3" loop />
 
       <div className="navbar-cart-wrapper">
         <div className="navbar-cart" onClick={() => setShowCart(true)}>
@@ -177,11 +187,15 @@ export default function Navbar({
                         <span>${item.price.toFixed(2)}</span>
                       </div>
                       <div className="quantity-controls">
-                        <button onClick={() => handleQuantityChange(item.id, -1)}>
+                        <button
+                          onClick={() => handleQuantityChange(item.id, -1)}
+                        >
                           -
                         </button>
                         <span>{item.quantity}</span>
-                        <button onClick={() => handleQuantityChange(item.id, 1)}>
+                        <button
+                          onClick={() => handleQuantityChange(item.id, 1)}
+                        >
                           +
                         </button>
                       </div>
@@ -206,7 +220,10 @@ export default function Navbar({
                 <p className="cart-total">
                   <strong>Total:</strong> ${total.toFixed(2)}
                 </p>
-                <button className="generate-bill-btn" onClick={handleGenerateBill}>
+                <button
+                  className="generate-bill-btn"
+                  onClick={handleGenerateBill}
+                >
                   🧾 Generate Bill
                 </button>
               </>
