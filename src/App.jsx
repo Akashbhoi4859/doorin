@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import ProductCard from "./components/ProductCard";
 import products from "./products";
-import Footer from "./components/Footer";
+import Footer from "./components/Footer"
 import FurnitureMarquee from "./components/FurnitureMarquee";
 import AboutPage from "./components/AboutPage";
 import Shutter from "./components/Shutter";
@@ -156,7 +156,7 @@ export default function App() {
         <ContactForm />
       </section>
 
-      <Footer />
+      <Footer/>
       <FurnitureMarquee />
     </div>
   );
