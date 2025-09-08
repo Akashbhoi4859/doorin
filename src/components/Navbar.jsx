@@ -159,7 +159,7 @@ export default function Navbar({
       </ul>
 
       {/* Hidden audio element */}
-      <audio ref={audioRef} src="/sample.mp3" loop />
+      <audio ref={audioRef} src="public/sample.mp3" loop />
 
       <div className="navbar-cart-wrapper">
         <div className="navbar-cart" onClick={() => setShowCart(true)}>
